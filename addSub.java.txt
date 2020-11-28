@@ -1,0 +1,125 @@
+package addition;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Font;
+
+public class Addition {
+
+	private JFrame frame;
+	private JTextField Addvalue;
+	private JTextField Subvalue;
+	private JTextField txtdisplay;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Addition window = new Addition();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public Addition() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 700, 400);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		Addvalue = new JTextField();
+		Addvalue.setFont(new Font("Tahoma", Font.BOLD, 25));
+		Addvalue.setBounds(86, 29, 184, 50);
+		frame.getContentPane().add(Addvalue);
+		Addvalue.setColumns(10);
+		
+		Subvalue = new JTextField();
+		Subvalue.setFont(new Font("Tahoma", Font.BOLD, 25));
+		Subvalue.setColumns(10);
+		Subvalue.setBounds(408, 29, 178, 50);
+		frame.getContentPane().add(Subvalue);
+		
+		JButton btnAdd = new JButton("ADD");
+		btnAdd.setFont(new Font("Tahoma", Font.BOLD, 15));
+		btnAdd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				
+				int num1,num2,ans;
+				
+				try{
+					num1 = Integer.parseInt(Addvalue.getText());
+					num2 = Integer.parseInt(Subvalue.getText());
+					
+					ans = num1 + num2 ; 
+					txtdisplay.setText(Integer.toString(ans));
+					
+				}
+				catch (Exception e ){
+					
+					JOptionPane.showMessageDialog(null, "Only Valid/Integer Number acepted");
+					
+				}
+				
+			}
+		});
+		btnAdd.setBounds(240, 148, 99, 33);
+		frame.getContentPane().add(btnAdd);
+		
+		JButton btnSub = new JButton("SUB");
+		btnSub.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				
+		int num1,num2,ans;
+				
+				try{
+					num1 = Integer.parseInt(Addvalue.getText());
+					num2 = Integer.parseInt(Subvalue.getText());
+					
+					ans = num1  - num2 ; 
+					txtdisplay.setText(Integer.toString(ans));
+					
+				}
+				catch (Exception e ){
+					JOptionPane.showMessageDialog(null, "Only Valid/Integer Number acepted");
+					
+				}
+				
+			
+			}
+		});
+		btnSub.setFont(new Font("Tahoma", Font.BOLD, 15));
+		btnSub.setBounds(339, 148, 99, 33);
+		frame.getContentPane().add(btnSub);
+		
+		txtdisplay = new JTextField();
+		txtdisplay.setFont(new Font("Tahoma", Font.BOLD, 25));
+		txtdisplay.setBounds(193, 229, 323, 59);
+		frame.getContentPane().add(txtdisplay);
+		txtdisplay.setColumns(10);
+	}
+
+}
